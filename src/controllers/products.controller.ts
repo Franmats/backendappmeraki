@@ -11,14 +11,13 @@ import { ProductService } from '../services/products.service';
 export const getProductByCode = async (req, res) => {
     try {
         const barcode = req.params.code.trim();
-         if (!barcode) {
-    return res.status(400).json({ message: "Código requerido" })
-  }
+    if (!barcode) {
+    return res.status(400).json({ message: "Código requerido" })}
         const product = await ProductService.findByBarcode(barcode);
 
-        if (!product) {
-            return res.status(404).json({ error: 'Producto no encontrado' });
-        }
+    if (!product) {
+        return res.status(404).json({ error: 'Producto no encontrado' });
+    }
 
         res.json(product);
     } catch (error) {
