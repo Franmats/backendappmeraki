@@ -18,10 +18,14 @@ app.use(cors({
   // Import dinámico de rutas (como ya lo tenías)
 
   const productsRoutes = (await import('./routes/products.routes')).default;
+  const usersRoutes = (await import('./routes/user.routes')).default;
+  const adminRoutes = (await import('./routes/admin.routes')).default;
 
 
 
   app.use('/api', productsRoutes);
+  app.use('/api', usersRoutes);
+  app.use('/api', adminRoutes);
 
   app.get('/', (req, res) => {
     res.send('¡Hola desde TypeScript con ES Modules!');
