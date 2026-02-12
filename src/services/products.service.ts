@@ -7,6 +7,7 @@ export interface Product {
   descripcion: string
   codigo: string
   precio: number
+  stock:number
 }
 
 
@@ -16,7 +17,7 @@ static async findByBarcode(
     barcode: string
   ): Promise<Product | null> {
     const query = `
-      SELECT id, descripcion, codigo, precio
+      SELECT id, descripcion, codigo, precio, stock
       FROM productos
       WHERE codigo = $1
       LIMIT 1

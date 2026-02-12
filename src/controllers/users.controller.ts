@@ -26,17 +26,16 @@ export const getUserByEmail = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { email, dni, password } = req.body
+    const { password, name } = req.body
 
-    if ((!email && !dni) || !password) {
+    if ((!name && !password ) || !password) {
       return res.status(400).json({
-        message: "Debe ingresar email o DNI y contraseña",
+        message: "Debe ingresar usuario y contraseña",
       })
     }
 
-    const user = email
-      ? await UserService.getUserByEmail(email)
-      : await UserService.getUserByDni(dni)
+    const user = await UserService.getUserByName(name)
+   
 
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" })
@@ -53,7 +52,7 @@ export const login = async (req, res) => {
       email: user.email ?? null,
       dni: user.dni ?? null,
     })
-
+    
     res.status(200).json({
       message: "Login correcto",
       payload: token,

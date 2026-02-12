@@ -35,6 +35,19 @@ export class UserService {
 
     return rows[0] ?? null
   }
+  // Obtener usuario por NAME (admin)
+  static async getUserByName(name: string) {
+    const { rows } = await pool.query(
+      `
+      SELECT id, name, email, password, role
+      FROM users
+      WHERE name = $1
+      `,
+      [name]
+    )
+
+    return rows[0] ?? null
+  }
 
   // Obtener usuario por DNI (usuarios finales)
   static async getUserByDni(dni: string) {

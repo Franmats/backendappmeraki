@@ -29,6 +29,14 @@ export const authTokenHeader = (token: string) => {
   }
 };
 
+export const authTokenCookie = (token :string) => {
+
+    const verify = jwt.verify(token, PRIVATE_KEY)
+    console.log(verify)
+    if(!verify) return false
+    return verify
+}
+
 /* 
 // JWT Extraemos el token del header
 export const authToken = (req, res, next) => {
