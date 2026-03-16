@@ -1,6 +1,7 @@
 import { pool } from '../../config/db';
 import { createProduct, updateVariant, deactivateProduct,activateProduct } from './tiendanube.service';
 import config from '../../config/config';
+import fs from 'fs';
 
 interface ProductRow {
   id: number;
@@ -61,7 +62,11 @@ async function syncProduct(product: ProductRow): Promise<void> {
 
     } else if (!existing) {
       // Producto nuevo → crear en TN
-      const imagen = `${config.api_url}/api/dataforapptn/imagenes/${product.codigo}.jpg`;
+      const imagePath = `${config.images_dir}/${product.codigo}.jpg`;
+      const imagen = fs.existsSync(imagePath)
+                ? `${config.api_url}/api/dataforapptn/imagenes/${product.codigo}.jpg`
+                : null;
+      
       const { tiendanube_id, variant_id } = await createProduct({
         codigo: product.codigo,
         nombre: product.nombre,
