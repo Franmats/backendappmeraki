@@ -48,7 +48,7 @@ async function bootstrap() {
   app.use('/api', productsRoutes);
   app.use('/api', usersRoutes);
   app.use('/api', adminRoutes);
-  app.use('/api/tiendanube', webhookRoutes);
+  //app.use('/api/tiendanube', webhookRoutes);
 
   app.get('/', (req, res) => {
     res.send('¡Hola desde TypeScript con ES Modules!');
@@ -60,7 +60,7 @@ async function bootstrap() {
   console.log('IMAGES_DIR:', config.images_dir);
 
   await testConnection();
-  startSyncWorker();
+  //startSyncWorker();
 
   app.listen(config.port, () => {
     console.log(`Servidor corriendo en http://localhost:${config.port}`);
