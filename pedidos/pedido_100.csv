@@ -1,0 +1,2 @@
+numero_pedido,estado,estado_pago,nombre,email,dni,telefono,direccion,ciudad,provincia,codigo_postal,subtotal,descuento,total
+100,open,pending,Franco Cuenca,francomats424@gmail.com,,,,,,,1900.00,,1900.00

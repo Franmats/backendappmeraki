@@ -18,6 +18,11 @@ export interface Config {
   db_pass?: string;
   db_user?: string;
   privatekey?: string;
+  tn_store_id?: string;
+  tn_access_token?: string;
+  pedidos_dir?: string;
+  images_dir?: string;
+  api_url?: string;
 }
 
 const config: Config = {
@@ -28,6 +33,11 @@ const config: Config = {
   db_pass: process.env.DB_PASS,
   db_user: process.env.DB_USER,
   privatekey: process.env.PRIVATE_KEY,
+  tn_store_id: process.env.TN_STORE_ID,
+  tn_access_token: process.env.TN_ACCESS_TOKEN,
+  pedidos_dir: process.env.PEDIDOS_DIR,
+  images_dir: process.env.IMAGES_DIR,
+  api_url: process.env.API_URL,
 };
 
 export default config;
