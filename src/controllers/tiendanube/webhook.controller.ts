@@ -11,7 +11,7 @@ export async function handleOrderWebhook(req: Request, res: Response): Promise<v
   res.status(200).json({ received: true });
 
   try {
-    if (!payload.event.startsWith('orders/')) return;
+    if (!payload.event.startsWith('order/')) return;
 
     // Evitar duplicados
     const { rows } = await pool.query(
