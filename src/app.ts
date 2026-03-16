@@ -54,8 +54,7 @@ async function bootstrap() {
     res.send('¡Hola desde TypeScript con ES Modules!');
   });
 
-  console.log('TN_STORE_ID:', config.tn_store_id);
-  console.log('TN_ACCESS_TOKEN:', config.tn_access_token);
+
   console.log('PEDIDOS_DIR:', config.pedidos_dir);
   console.log('IMAGES_DIR:', config.images_dir);
 
